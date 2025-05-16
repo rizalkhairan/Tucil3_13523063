@@ -12,10 +12,6 @@ export function UCS(puzzleState){
     while (!q.isEmpty()) {
         const node = q.dequeue();
 
-        // Try to move primary piece
-        status = puzzleState.tryMoves(node, q, visited, PRIMARY_PIECE);
-        if (status !== null) return status;
-
         // Try to move other pieces
         for (const letter of puzzleState.getAllPieces()) {
             if (letter === PRIMARY_PIECE) {
@@ -24,6 +20,10 @@ export function UCS(puzzleState){
             status = puzzleState.tryMoves(node, q, visited, letter);
             if (status !== null) return status;
         }
+        
+        // Try to move primary piece
+        status = puzzleState.tryMoves(node, q, visited, PRIMARY_PIECE);
+        if (status !== null) return status;
     }
 
     return status;

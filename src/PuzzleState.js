@@ -12,7 +12,7 @@ export { SearchNode, PriorityQueue, PuzzleState };
 class SearchNode {
     constructor(board, parentNode, letter, moveDistance) {
         this.board = board;
-        this.g = parentNode ? parentNode.g + 1 : 0;
+        this.g = parentNode ? parentNode.g + 1 : 0; // Default g. Should always be set to 0 for greedy
         this.h = 0;
         this.f = this.g + this.h;
         this.parent = parentNode;

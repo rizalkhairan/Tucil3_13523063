@@ -1,6 +1,7 @@
 import { ReadConfig } from './ConfigParser.js';
 import { createInterface } from 'readline';
 import { UCS } from './UCS.js';
+import { Greedy } from './Greedy.js';
 
 const SEARCH_ALGORITHMS = {
     "1": "A*",
@@ -41,6 +42,8 @@ async function main() {
         return;
     }
 
+    let start, end;
+    let goalNode = null;
     switch (algo) {
         case "1":
             console.log("Running A* algorithm...");
@@ -48,19 +51,18 @@ async function main() {
         case "2":
             console.log("Running UCS algorithm...");
             puzzleState.nodeCount = 0;
-            const start = performance.now();
-            const goalNode = UCS(puzzleState);
-            const end = performance.now();
-            console.log("Total nodes visited: " + puzzleState.nodeCount);
-            console.log("Time taken: " + (end - start) + " ms");
-            if (goalNode !== null) {
-                puzzleState.printPath(goalNode);
-            } else {
-                console.log("No solution found.");
-            }
+
+            start = performance.now();
+            goalNode = UCS(puzzleState);
+            end = performance.now();
             break;
         case "3":
             console.log("Running Greedy algorithm...");
+            puzzleState.nodeCount = 0;
+
+            start = performance.now();
+            goalNode = Greedy(puzzleState);
+            end = performance.now();
             break;
         default:
             console.error("Invalid algorithm choice");
@@ -68,6 +70,14 @@ async function main() {
             return;
     }
 
+    console.log("Total nodes visited: " + puzzleState.nodeCount);
+    console.log("Time taken: " + (end - start) + " ms");
+    if (goalNode !== null) {
+        puzzleState.printPath(goalNode);
+    } else {
+        console.log("No solution found.");
+    }
+    
     rl.close();
     return;
 }
