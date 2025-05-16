@@ -2,14 +2,14 @@ import { SearchNode, PriorityQueue, PRIMARY_PIECE } from './PuzzleState.js';
 import { piecesInFront, piecesInFrontRecursive } from './Heuristics.js';
 
 function gEstimator(node, puzzleState) {
-    return 0;   // Greedy algorithm does not use g(n)
+    return node.g + 1;
 }
 function hEstimator(node, puzzleState) {
     // Heuristic: number of piece that is in front of the primary piece
-    return piecesInFront(node, puzzleState);
+    return piecesInFrontRecursive(node, puzzleState, PRIMARY_PIECE);
 }
 
-export function Greedy(puzzleState) {
+export function AStar(puzzleState) {
     const q = new PriorityQueue();
     const visited = new Set();
 

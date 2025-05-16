@@ -1,5 +1,6 @@
 import { ReadConfig } from './ConfigParser.js';
 import { createInterface } from 'readline';
+import { AStar } from './AStar.js';
 import { UCS } from './UCS.js';
 import { Greedy } from './Greedy.js';
 
@@ -47,6 +48,11 @@ async function main() {
     switch (algo) {
         case "1":
             console.log("Running A* algorithm...");
+            puzzleState.nodeCount = 0;
+
+            start = performance.now();
+            goalNode = AStar(puzzleState);
+            end = performance.now();
             break;
         case "2":
             console.log("Running UCS algorithm...");
