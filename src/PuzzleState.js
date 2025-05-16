@@ -1,4 +1,5 @@
 export const EMPTY_SPACE = ".";
+export const PRIMARY_PIECE = "P";
 export const SIDES = {
     TOP: 0,
     RIGHT: 1,
@@ -26,8 +27,12 @@ class SearchNode {
         this.h = h;
         this.f = this.g + this.h;
     }
+
+    getSignature() {
+        return this.board.boardStrings().join("");
+    }
     
-    printNode(count) {
+    toString(count) {
         const piece = this.board.pieces.get(this.letter);
 
         let lines = [];
@@ -41,15 +46,11 @@ class SearchNode {
         } else if (this.moveDistance < 0 && !piece.isHorizontal) {
             lines.push("atas\n");
         }
-        for (let i = 0; i < this.board.height; i++) {
-            let row = "";
-            for (let j = 0; j < this.board.width; j++) {
-                row += this.board.pieceAt(j, i);
-            }
+        for (const row of this.board.boardStrings()) {
             lines.push(row + "\n");
         }
 
-        console.log(lines.join(""));
+        return lines.join("");
     }
 }
 
@@ -81,15 +82,25 @@ class PuzzleState {
         this.doorSide = doorSide;
         this.doorPos = doorPos;
         this.initialBoard = new Board(width, height, board);
-
+        this.nodeCount = 0;
     }
 
     getAllPieces() {
         return this.initialBoard.pieces.keys();
     }
 
-    isGoalNode() {
-        const primaryPiece = this.initialBoard.pieces.get("P");
+    generateNode(letter, moveDistance, node) { // Factory to generate a new search node
+        if (!node.board.isMoveValid(letter, moveDistance)) {
+            return null;
+        }
+
+        let newBoard = new Board(node.board.width, node.board.height, node.board.board);
+        newBoard.movePiece(letter, moveDistance);
+        return new SearchNode(newBoard, node, letter, moveDistance);
+    }
+
+    isGoalNode(node) {
+        const primaryPiece = node.board.pieces.get(PRIMARY_PIECE);
         // Check if the primary piece incide with the door
         for (let i = 0; i < primaryPiece.length; i++) {
             const x = primaryPiece.anchorX + (primaryPiece.isHorizontal ? i : 0);
@@ -101,14 +112,22 @@ class PuzzleState {
         return false;
     }
 
-    generateNode(letter, moveDistance, node) { // Factory to generate a new search node
-        if (!node.board.isMoveValid(letter, moveDistance)) {
-            return null;
+    printPath(node) {
+        const path = [];
+        while (node !== null) {
+            path.push(node);
+            node = node.parent;
         }
-
-        let newBoard = new Board(node.board.width, node.board.height, node.board.board);
-        newBoard.movePiece(letter, moveDistance);
-        return new Node(newBoard, node, letter, moveDistance);
+        path.reverse();
+        for (let i = 0; i < path.length; i++) {
+            if (i === 0) {
+                console.log("Initial Board:");
+                console.log(path[i].board.boardStrings().join("\n"));
+                console.log("\n");
+            } else {
+                console.log(path[i].toString(i));
+            }
+        }
     }
 }
 
@@ -197,6 +216,18 @@ class Board {
             }
         }
         return true;
+    }
+
+    boardStrings() {
+        let rows = [];
+        for (let i = 0; i < this.height; i++) {
+            let row = "";
+            for (let j = 0; j < this.width; j++) {
+                row += this.pieceAt(j, i);
+            }
+            rows.push(row);
+        }
+        return rows;
     }
 }
 

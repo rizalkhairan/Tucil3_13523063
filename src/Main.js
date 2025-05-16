@@ -1,6 +1,6 @@
 import { ReadConfig } from './ConfigParser.js';
-import { PuzzleState } from './PuzzleState.js';
 import { createInterface } from 'readline';
+import { UCS } from './UCS.js';
 
 const SEARCH_ALGORITHMS = {
     "1": "A*",
@@ -39,6 +39,33 @@ async function main() {
         console.error("Invalid algorithm choice");
         rl.close();
         return;
+    }
+
+    switch (algo) {
+        case "1":
+            console.log("Running A* algorithm...");
+            break;
+        case "2":
+            console.log("Running UCS algorithm...");
+            puzzleState.nodeCount = 0;
+            const start = performance.now();
+            const goalNode = UCS(puzzleState);
+            const end = performance.now();
+            console.log("Total nodes visited: " + puzzleState.nodeCount);
+            console.log("Time taken: " + (end - start) + " ms");
+            if (goalNode !== null) {
+                puzzleState.printPath(goalNode);
+            } else {
+                console.log("No solution found.");
+            }
+            break;
+        case "3":
+            console.log("Running Greedy algorithm...");
+            break;
+        default:
+            console.error("Invalid algorithm choice");
+            rl.close();
+            return;
     }
 
     rl.close();
