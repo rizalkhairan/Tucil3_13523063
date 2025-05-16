@@ -23,6 +23,10 @@ class SearchNode {
     getF () {
         return this.f;
     }
+    setG(g) {
+        this.g = g;
+        this.f = this.g + this.h;
+    }
     setH(h) {
         this.h = h;
         this.f = this.g + this.h;
@@ -62,7 +66,7 @@ class PriorityQueue {
 
     enqueue(node) {
         this.queue.push(node);
-        this.queue.sort((a, b) => a.f - b.f);
+        this.queue.sort((a, b) => a.getF() - b.getF());
     }
 
     dequeue() {
@@ -110,6 +114,34 @@ class PuzzleState {
             }
         }
         return false;
+    }
+
+    tryMoves(node, queue, visited, piece, gEstimator=null,hEstimator=null) {
+        for (const direction of [1, -1]) { // Try positive and negative directions
+            let moveDist = 0;
+            while (true) {
+                this.nodeCount++;
+                moveDist += direction;
+                const newNode = this.generateNode(piece, moveDist, node);
+                if (newNode === null) break;
+                if (this.isGoalNode(node)) {
+                    return node;
+                }
+    
+                if (gEstimator !== null) {
+                    newNode.setG(gEstimator(newNode, this));
+                }
+                if (hEstimator !== null) {
+                    newNode.setH(hEstimator(newNode, this));
+                }
+
+                if (!visited.has(newNode.getSignature())) {
+                    queue.enqueue(newNode);
+                    visited.add(newNode.getSignature());
+                }
+            }
+        }
+        return null;
     }
 
     printPath(node) {
