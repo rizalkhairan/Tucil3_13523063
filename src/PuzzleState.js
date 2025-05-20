@@ -1,11 +1,17 @@
 export const EMPTY_SPACE = ".";
 export const PRIMARY_PIECE = "P";
+export const DOOR = "K";
 export const SIDES = {
     TOP: 0,
     RIGHT: 1,
     BOTTOM: 2,
     LEFT: 3
 };
+
+const ANSI_RESET = "\x1b[0m";
+const ANSI_BLUE = "\x1b[34m";
+const ANSI_GREEN = "\x1b[32m";
+const ANSI_RED = "\x1b[31m";
 
 export { SearchNode, PriorityQueue, PuzzleState };
 
@@ -16,7 +22,7 @@ class SearchNode {
         this.h = 0;
         this.f = this.g + this.h;
         this.parent = parentNode;
-        this.letter = letter;
+        this.movedLetter = letter;
         this.moveDistance = moveDistance;
     }
 
@@ -36,23 +42,62 @@ class SearchNode {
         return this.board.boardStrings().join("");
     }
     
-    toString(count) {
-        const piece = this.board.pieces.get(this.letter);
+    toString(count, doorSide, doorPos) {
+        const piece = this.board.pieces.get(this.movedLetter);
 
         let lines = [];
-        lines.push(`Gerakan ${count}: ${this.letter}-`)
-        if (this.moveDistance > 0 && piece.isHorizontal) {
-            lines.push("kanan\n");
-        } else if (this.moveDistance < 0 && piece.isHorizontal) {
-            lines.push("kiri\n");
-        } else if (this.moveDistance > 0 && !piece.isHorizontal) {
-            lines.push("bawah\n");
-        } else if (this.moveDistance < 0 && !piece.isHorizontal) {
-            lines.push("atas\n");
+        if (count == 0) {
+            lines.push("Papan awal\n");
+        } else {
+            lines.push(`Gerakan ${count}: ${this.movedLetter}-`)
+            if (this.moveDistance > 0 && piece.isHorizontal) {
+                lines.push("kanan\n");
+            } else if (this.moveDistance < 0 && piece.isHorizontal) {
+                lines.push("kiri\n");
+            } else if (this.moveDistance > 0 && !piece.isHorizontal) {
+                lines.push("bawah\n");
+            } else if (this.moveDistance < 0 && !piece.isHorizontal) {
+                lines.push("atas\n");
+            }
         }
-        for (const row of this.board.boardStrings()) {
-            lines.push(row + "\n");
+        // Board
+        let boardStrings = this.board.boardStrings();
+        if (doorSide === SIDES.TOP) {
+            doorLine = " ".repeat(doorPos.x) + DOOR;
+            boardStrings.unshift(doorLine);
+
+        } else if (doorSide === SIDES.BOTTOM) {
+            doorLine = " ".repeat(doorPos.x) + DOOR;
+            boardStrings.push(doorLine);
+        } else if (doorSide === SIDES.LEFT) {
+            for (let i = 0; i < this.height; i++) {
+                if (i === doorPos.y) {
+                    boardStrings[i] = DOOR + boardStrings[i];
+                } else {
+                    boardStrings[i] = " " + boardStrings[i];
+                }
+            }
+        } else if (doorSide === SIDES.RIGHT) {
+            boardStrings[doorPos.y] += DOOR;
         }
+        // Colorize the board
+        for (let i = 0; i < boardStrings.length; i++) {
+            let rowchars = boardStrings[i].split("");
+            for (let j = 0; j < rowchars.length; j++) {
+                const char = rowchars[j];
+                if (char === PRIMARY_PIECE) {
+                    rowchars[j] = ANSI_RED + char + ANSI_RESET;
+                } else if (char === this.movedLetter) {
+                    rowchars[j] = ANSI_BLUE + char + ANSI_RESET;
+                } else if (char === DOOR) {
+                    rowchars[j] = ANSI_GREEN + char + ANSI_RESET;
+                }
+            }
+            boardStrings[i] = rowchars.join("");
+        }
+        
+        lines.push(boardStrings.join("\n"));
+        lines.push("\n");
 
         return lines.join("");
     }
@@ -152,13 +197,7 @@ class PuzzleState {
         }
         path.reverse();
         for (let i = 0; i < path.length; i++) {
-            if (i === 0) {
-                console.log("Initial Board:");
-                console.log(path[i].board.boardStrings().join("\n"));
-                console.log("\n");
-            } else {
-                console.log(path[i].toString(i));
-            }
+            console.log(path[i].toString(i, this.doorSide, this.doorPos));
         }
     }
 }
