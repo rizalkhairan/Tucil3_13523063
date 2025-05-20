@@ -1,7 +1,7 @@
 import { ReadConfig } from './ConfigParser.js';
 import { createInterface } from 'readline';
 import { Pathfind } from './Pathfind.js';
-import { nodesFromStart, piecesInFront, piecesInFrontRecursive } from './Heuristics.js';
+import { nodesFromStart, piecesInFront, recursiveBlockers } from './Heuristics.js';
 
 const SEARCH_ALGORITHMS = {
     "1": "A*",
@@ -50,7 +50,7 @@ async function main() {
             puzzleState.nodeCount = 0;
 
             start = performance.now();
-            goalNode = Pathfind(puzzleState, nodesFromStart, piecesInFrontRecursive);
+            goalNode = Pathfind(puzzleState, nodesFromStart, piecesInFront);
             end = performance.now();
             break;
         case "2":
