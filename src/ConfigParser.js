@@ -43,7 +43,7 @@ export function ReadConfig(filename) { // ret: BoardState
                 }
             });
         } else {
-            if (board.length >= boardHeight) {
+            if (board.length >= boardHeight && doorSide !== SIDES.NONE) {
                 return; // Ignore extra lines
             }
 
@@ -54,15 +54,17 @@ export function ReadConfig(filename) { // ret: BoardState
                 }
     
                 if (lineIdx === 2) {
-                    doorSide = SIDES.UP;
+                    doorSide = SIDES.TOP;
                     doorPos.x = line.indexOf("K");
                     doorPos.y = 0;
+                    lineIdx--;
                 } else {
-                    doorSide = SIDES.DOWN;
+                    doorSide = SIDES.BOTTOM;
                     doorPos.x = line.indexOf("K");
                     doorPos.y = boardHeight - 1;
                 }
                 line = line.replace("K", " ");
+                return;
             }
             if (line.at(0) === "K") {
                 if (doorSide !== SIDES.NONE) {
@@ -97,13 +99,13 @@ export function ReadConfig(filename) { // ret: BoardState
     let state = new PuzzleState(boardWidth, boardHeight, pieceCount, board.join(""), doorSide, doorPos);
     console.log("Config file read successfully");
     switch (doorSide) {
-        case SIDES.UP:
+        case SIDES.TOP:
             console.log("Door side: UP");
             break;
         case SIDES.RIGHT:
             console.log("Door side: RIGHT");
             break;
-        case SIDES.DOWN:
+        case SIDES.BOTTOM:
             console.log("Door side: DOWN");
             break;
         case SIDES.LEFT:

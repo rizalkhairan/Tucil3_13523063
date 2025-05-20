@@ -65,14 +65,13 @@ class SearchNode {
         // Board
         let boardStrings = this.board.boardStrings();
         if (doorSide === SIDES.TOP) {
-            doorLine = " ".repeat(doorPos.x) + DOOR;
+            const doorLine = " ".repeat(doorPos.x) + DOOR;
             boardStrings.unshift(doorLine);
-
         } else if (doorSide === SIDES.BOTTOM) {
-            doorLine = " ".repeat(doorPos.x) + DOOR;
+            const doorLine = " ".repeat(doorPos.x) + DOOR;
             boardStrings.push(doorLine);
         } else if (doorSide === SIDES.LEFT) {
-            for (let i = 0; i < this.height; i++) {
+            for (let i = 0; i < boardStrings.length; i++) {
                 if (i === doorPos.y) {
                     boardStrings[i] = DOOR + boardStrings[i];
                 } else {
@@ -134,6 +133,7 @@ class PuzzleState {
         this.doorPos = doorPos;
         this.initialBoard = new Board(width, height, board);
         this.nodeCount = 0;
+
     }
 
     getAllPieces() {

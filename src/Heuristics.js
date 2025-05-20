@@ -12,7 +12,7 @@ export function piecesInFront(node, puzzleState) {
     const coordsToCheck = [];
     const primaryPiece = node.board.pieces.get(PRIMARY_PIECE);
     switch (puzzleState.doorSide) {
-        case SIDES.UP:
+        case SIDES.TOP:
             for (let i = primaryPiece.anchorY-1; i >= 0; i--) {
                 coordsToCheck.push({ x: primaryPiece.anchorX, y: i });
             }
@@ -55,7 +55,7 @@ export function piecesInFrontRecursive(node, puzzleState, piece) {
     const coordsToCheck = [];
     const primaryPiece = node.board.pieces.get(piece);
     switch (puzzleState.doorSide) {
-        case SIDES.UP:
+        case SIDES.TOP:
             for (let i = primaryPiece.anchorY-1; i >= 0; i--) {
                 coordsToCheck.push({ x: primaryPiece.anchorX, y: i });
             }
