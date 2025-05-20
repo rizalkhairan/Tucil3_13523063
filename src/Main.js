@@ -1,8 +1,7 @@
 import { ReadConfig } from './ConfigParser.js';
 import { createInterface } from 'readline';
-import { AStar } from './AStar.js';
-import { UCS } from './UCS.js';
-import { Greedy } from './Greedy.js';
+import { Pathfind } from './Pathfind.js';
+import { nodesFromStart, piecesInFront, piecesInFrontRecursive } from './Heuristics.js';
 
 const SEARCH_ALGORITHMS = {
     "1": "A*",
@@ -51,7 +50,7 @@ async function main() {
             puzzleState.nodeCount = 0;
 
             start = performance.now();
-            goalNode = AStar(puzzleState);
+            goalNode = Pathfind(puzzleState, nodesFromStart, piecesInFrontRecursive);
             end = performance.now();
             break;
         case "2":
@@ -59,7 +58,7 @@ async function main() {
             puzzleState.nodeCount = 0;
 
             start = performance.now();
-            goalNode = UCS(puzzleState);
+            goalNode = Pathfind(puzzleState, nodesFromStart, null);
             end = performance.now();
             break;
         case "3":
@@ -67,7 +66,7 @@ async function main() {
             puzzleState.nodeCount = 0;
 
             start = performance.now();
-            goalNode = Greedy(puzzleState);
+            goalNode = Pathfind(puzzleState, null, piecesInFront);
             end = performance.now();
             break;
         default:

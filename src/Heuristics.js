@@ -1,5 +1,13 @@
 import { PRIMARY_PIECE, SIDES } from "./PuzzleState.js";
 
+/* g(n) estimators */
+
+export function nodesFromStart(node, puzzleState) {
+    return node.g + 1;
+}
+
+/* h(n) estimators */
+
 export function piecesInFront(node, puzzleState) {
     const coordsToCheck = [];
     const primaryPiece = node.board.pieces.get(PRIMARY_PIECE);
@@ -39,6 +47,10 @@ export function piecesInFront(node, puzzleState) {
 
 export function piecesInFrontRecursive(node, puzzleState, piece) {
     let blockers = new Set();
+
+    if (piece === undefined) {
+        piece = PRIMARY_PIECE;
+    }
 
     const coordsToCheck = [];
     const primaryPiece = node.board.pieces.get(piece);
