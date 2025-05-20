@@ -1,5 +1,12 @@
 import { SearchNode, PriorityQueue, PRIMARY_PIECE } from './PuzzleState.js';
 
+function gEstimator(node, puzzleState) {
+    return node.g + 1;  // This is also the default value when a node is generated
+}
+function hEstimator(node, puzzleState) {
+    return 0;   // UCS does not use h(n)
+}
+
 export function UCS(puzzleState){
     const q = new PriorityQueue();
     const visited = new Set();
@@ -8,8 +15,9 @@ export function UCS(puzzleState){
     q.enqueue(startNode);
     visited.add(startNode.getSignature());
 
-    let status = null;  // Will point to the goal node if found
+    let finalNode = null;  // Will point to the goal node if found
     while (!q.isEmpty()) {
+        // Generate nodes by trying to move pieces in this current state
         const node = q.dequeue();
 
         // Try to move other pieces
@@ -17,14 +25,14 @@ export function UCS(puzzleState){
             if (letter === PRIMARY_PIECE) {
                 continue;
             }
-            status = puzzleState.tryMoves(node, q, visited, letter);
-            if (status !== null) return status;
+            finalNode = puzzleState.tryMoves(node, q, visited, letter, gEstimator, hEstimator);
+            if (finalNode !== null) return finalNode;
         }
         
         // Try to move primary piece
-        status = puzzleState.tryMoves(node, q, visited, PRIMARY_PIECE);
-        if (status !== null) return status;
+        finalNode = puzzleState.tryMoves(node, q, visited, PRIMARY_PIECE, gEstimator, hEstimator);
+        if (finalNode !== null) return finalNode;
     }
 
-    return status;
+    return finalNode;
 }

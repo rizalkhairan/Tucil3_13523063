@@ -2,7 +2,7 @@ import { SearchNode, PriorityQueue, PRIMARY_PIECE } from './PuzzleState.js';
 import { piecesInFront, piecesInFrontRecursive } from './Heuristics.js';
 
 function gEstimator(node, puzzleState) {
-    return node.g + 1;
+    return node.g + 1;  // This is also the default value when a node is generated
 }
 function hEstimator(node, puzzleState) {
     // Heuristic: number of piece that is in front of the primary piece
@@ -17,8 +17,9 @@ export function AStar(puzzleState) {
     q.enqueue(startNode);
     visited.add(startNode.getSignature());
 
-    let status = null;  // Will point to the goal node if found
+    let finalNode = null;  // Will point to the goal node if found
     while (!q.isEmpty()) {
+        // Generate nodes by trying to move pieces in this current state
         const node = q.dequeue();
         
         // Try to move other pieces
@@ -26,14 +27,14 @@ export function AStar(puzzleState) {
             if (letter === PRIMARY_PIECE) {
                 continue;
             }
-            status = puzzleState.tryMoves(node, q, visited, letter);
-            if (status !== null) return status;
+            finalNode = puzzleState.tryMoves(node, q, visited, letter, gEstimator, hEstimator);
+            if (finalNode !== null) return finalNode;
         }
 
         // Try to move primary piece
-        status = puzzleState.tryMoves(node, q, visited, PRIMARY_PIECE, gEstimator, hEstimator);
-        if (status !== null) return status;
+        finalNode = puzzleState.tryMoves(node, q, visited, PRIMARY_PIECE, gEstimator, hEstimator);
+        if (finalNode !== null) return finalNode;
     }
 
-    return status;
+    return finalNode;
 }
