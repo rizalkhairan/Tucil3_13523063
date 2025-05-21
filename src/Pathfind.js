@@ -1,5 +1,7 @@
 import { SearchNode, PriorityQueue } from './PuzzleState.js';
 
+const MAX_ITER = 100000;
+
 // Returns the final goal node if found, otherwise null
 // gEstimator and hEstimator are functions that estimates the g(n) and h(n) costs
 // If only gEstimator is provided, the pathfinding algorithm is equivalent to UCS
@@ -20,6 +22,7 @@ export function Pathfind(puzzleState, gEstimator, hEstimator) {
     visited.set(startNode.getSignature(), startNode.getF());
 
     let finalNode = null;  // Will point to the goal node if found
+    let iterCount = 0;
     while (!q.isEmpty()) {
         const node = q.dequeue();
         if (puzzleState.isGoalNode(node)) {
@@ -33,6 +36,12 @@ export function Pathfind(puzzleState, gEstimator, hEstimator) {
         // Generate nodes by trying to move pieces in this current state
         for (const letter of puzzleState.getAllPieces()) {
             tryMoves(puzzleState, node, q, visited, letter, gEstimator, hEstimator);
+        }
+
+        iterCount++;
+        if (iterCount > MAX_ITER) {
+            console.log("Max iterations reached. Stopping search.");
+            break;
         }
     }
 

@@ -34,8 +34,20 @@ async function main() {
     for (const [key, value] of Object.entries(HEURISTICS)) {
         heuristicMsg += ` ${key}: ${value.desc}` + "\n";
     }
-    const heuristic = await askQuestion(rl, heuristicMsg);
-
+    if (!SEARCH_ALGORITHMS[algo]) {
+        console.error("Invalid algorithm choice");
+        rl.close();
+        return;
+    }
+    if (SEARCH_ALGORITHMS[algo] !== "UCS") {
+        var heuristic = await askQuestion(rl, heuristicMsg);
+        if (!HEURISTICS[heuristic]) {
+            console.error("Invalid heuristic choice");
+            rl.close();
+            return;
+        }
+    }
+    
     let puzzleState = null;
     try {
         puzzleState = ReadConfig(filename);
@@ -44,17 +56,7 @@ async function main() {
         rl.close();
         return;
     }
-
-    if (!SEARCH_ALGORITHMS[algo]) {
-        console.error("Invalid algorithm choice");
-        rl.close();
-        return;
-    }
-    if (!HEURISTICS[heuristic]) {
-        console.error("Invalid heuristic choice");
-        rl.close();
-        return;
-    }
+    
 
     let start, end;
     let goalNode = null;
