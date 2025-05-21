@@ -1,6 +1,6 @@
 import { SearchNode, PriorityQueue } from './PuzzleState.js';
 
-const MAX_ITER = 100000;
+const MAX_ITER = 10000;
 
 // Returns the final goal node if found, otherwise null
 // gEstimator and hEstimator are functions that estimates the g(n) and h(n) costs

@@ -1,4 +1,3 @@
-console.log("IOHandler.js loaded");
 import { readFileSync } from 'fs';
 import { EOL } from 'os';
 import { PuzzleState, SIDES, EMPTY_SPACE } from './PuzzleState.js';
