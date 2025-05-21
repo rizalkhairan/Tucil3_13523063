@@ -1,0 +1,37 @@
+Total nodes visited: 2417
+Time taken: 12.623700000000099 ms
+Algoritma: A*
+Heuristic: Jumlah piece antara primary piece dan pintu
+
+Papan awal
+ ..BCDF
+ ..BCDF
+ G..ZZ.
+KGHPPII
+ GH...Z
+ ..MM.Z
+
+Gerakan 1: G-atas
+ G.BCDF
+ G.BCDF
+ G..ZZ.
+K.HPPII
+ .H...Z
+ ..MM.Z
+
+Gerakan 2: H-bawah
+ G.BCDF
+ G.BCDF
+ G..ZZ.
+K..PPII
+ .H...Z
+ .HMM.Z
+
+Gerakan 3: P-kiri
+ G.BCDF
+ G.BCDF
+ G..ZZ.
+KPP..II
+ .H...Z
+ .HMM.Z
+

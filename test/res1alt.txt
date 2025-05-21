@@ -1,0 +1,61 @@
+Total nodes visited: 6429
+Time taken: 22.64550000000054 ms
+Algoritma: A*
+Heuristic: Jarak primary piece ke pintu
+
+Papan awal
+AAB..F
+..BCDF
+GPPCDFK
+GH.III
+GH....
+LL.MM.
+
+Gerakan 1: C-atas
+AABC.F
+..BCDF
+GPP.DFK
+GH.III
+GH....
+LL.MM.
+
+Gerakan 2: D-atas
+AABCDF
+..BCDF
+GPP..FK
+GH.III
+GH....
+LL.MM.
+
+Gerakan 3: P-kanan
+AABCDF
+..BCDF
+G..PPFK
+GH.III
+GH....
+LL.MM.
+
+Gerakan 4: I-kiri
+AABCDF
+..BCDF
+G..PPFK
+GHIII.
+GH....
+LL.MM.
+
+Gerakan 5: F-bawah
+AABCD.
+..BCD.
+G..PP.K
+GHIIIF
+GH...F
+LL.MMF
+
+Gerakan 6: P-kanan
+AABCD.
+..BCD.
+G...PPK
+GHIIIF
+GH...F
+LL.MMF
+

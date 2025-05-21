@@ -1,0 +1,252 @@
+Total nodes visited: 68226
+Time taken: 122.80040000000008 ms
+Algoritma: Greedy
+Heuristic: Jarak primary piece ke pintu
+Papan awal
+.B.YYY
+OB.CD.
+OPPCDMK
+IGGGDM
+I.V..N
+..VUUN
+
+Gerakan 1: I-bawah
+.B.YYY
+OB.CD.
+OPPCDMK
+.GGGDM
+I.V..N
+I.VUUN
+
+Gerakan 2: G-kiri
+.B.YYY
+OB.CD.
+OPPCDMK
+GGG.DM
+I.V..N
+I.VUUN
+
+Gerakan 3: C-bawah
+.B.YYY
+OB..D.
+OPP.DMK
+GGGCDM
+I.VC.N
+I.VUUN
+
+Gerakan 4: P-kanan
+.B.YYY
+OB..D.
+O.PPDMK
+GGGCDM
+I.VC.N
+I.VUUN
+
+Gerakan 5: B-bawah
+...YYY
+OB..D.
+OBPPDMK
+GGGCDM
+I.VC.N
+I.VUUN
+
+Gerakan 6: Y-kiri
+YYY...
+OB..D.
+OBPPDMK
+GGGCDM
+I.VC.N
+I.VUUN
+
+Gerakan 7: D-atas
+YYY.D.
+OB..D.
+OBPPDMK
+GGGC.M
+I.VC.N
+I.VUUN
+
+Gerakan 8: M-atas
+YYY.D.
+OB..DM
+OBPPDMK
+GGGC..
+I.VC.N
+I.VUUN
+
+Gerakan 9: N-atas
+YYY.D.
+OB..DM
+OBPPDMK
+GGGC.N
+I.VC.N
+I.VUU.
+
+Gerakan 10: U-kanan
+YYY.D.
+OB..DM
+OBPPDMK
+GGGC.N
+I.VC.N
+I.V.UU
+
+Gerakan 11: C-bawah
+YYY.D.
+OB..DM
+OBPPDMK
+GGG..N
+I.VC.N
+I.VCUU
+
+Gerakan 12: G-kanan
+YYY.D.
+OB..DM
+OBPPDMK
+..GGGN
+I.VC.N
+I.VCUU
+
+Gerakan 13: B-bawah
+YYY.D.
+O...DM
+O.PPDMK
+..GGGN
+IBVC.N
+IBVCUU
+
+Gerakan 14: G-kiri
+YYY.D.
+O...DM
+O.PPDMK
+GGG..N
+IBVC.N
+IBVCUU
+
+Gerakan 15: P-kiri
+YYY.D.
+O...DM
+OPP.DMK
+GGG..N
+IBVC.N
+IBVCUU
+
+Gerakan 16: C-atas
+YYYCD.
+O..CDM
+OPP.DMK
+GGG..N
+IBV..N
+IBV.UU
+
+Gerakan 17: P-kanan
+YYYCD.
+O..CDM
+O.PPDMK
+GGG..N
+IBV..N
+IBV.UU
+
+Gerakan 18: U-kiri
+YYYCD.
+O..CDM
+O.PPDMK
+GGG..N
+IBV..N
+IBVUU.
+
+Gerakan 19: N-bawah
+YYYCD.
+O..CDM
+O.PPDMK
+GGG...
+IBV..N
+IBVUUN
+
+Gerakan 20: G-kanan
+YYYCD.
+O..CDM
+O.PPDMK
+...GGG
+IBV..N
+IBVUUN
+
+Gerakan 21: B-atas
+YYYCD.
+OB.CDM
+OBPPDMK
+...GGG
+I.V..N
+I.VUUN
+
+Gerakan 22: I-atas
+YYYCD.
+OB.CDM
+OBPPDMK
+I..GGG
+I.V..N
+..VUUN
+
+Gerakan 23: V-atas
+YYYCD.
+OB.CDM
+OBPPDMK
+I.VGGG
+I.V..N
+...UUN
+
+Gerakan 24: U-kiri
+YYYCD.
+OB.CDM
+OBPPDMK
+I.VGGG
+I.V..N
+UU...N
+
+Gerakan 25: V-bawah
+YYYCD.
+OB.CDM
+OBPPDMK
+I..GGG
+I.V..N
+UUV..N
+
+Gerakan 26: G-kiri
+YYYCD.
+OB.CDM
+OBPPDMK
+IGGG..
+I.V..N
+UUV..N
+
+Gerakan 27: D-bawah
+YYYC..
+OB.C.M
+OBPP.MK
+IGGGD.
+I.V.DN
+UUV.DN
+
+Gerakan 28: P-kanan
+YYYC..
+OB.C.M
+OB.PPMK
+IGGGD.
+I.V.DN
+UUV.DN
+
+Gerakan 29: M-atas
+YYYC.M
+OB.C.M
+OB.PP.K
+IGGGD.
+I.V.DN
+UUV.DN
+
+Gerakan 30: P-kanan
+YYYC.M
+OB.C.M
+OB..PPK
+IGGGD.
+I.V.DN
+UUV.DN
+

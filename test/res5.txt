@@ -1,0 +1,51 @@
+Total nodes visited: 3018
+Time taken: 14.877900000000409 ms
+Algoritma: UCS
+Papan awal
+....B.
+....B.
+..PPB.K
+...I..
+...ICC
+......
+
+Gerakan 1: P-kiri
+....B.
+....B.
+.PP.B.K
+...I..
+...ICC
+......
+
+Gerakan 2: I-atas
+...IB.
+...IB.
+.PP.B.K
+......
+....CC
+......
+
+Gerakan 3: C-kiri
+...IB.
+...IB.
+.PP.B.K
+......
+..CC..
+......
+
+Gerakan 4: B-bawah
+...I..
+...I..
+.PP...K
+....B.
+..CCB.
+....B.
+
+Gerakan 5: P-kanan
+...I..
+...I..
+....PPK
+....B.
+..CCB.
+....B.
+

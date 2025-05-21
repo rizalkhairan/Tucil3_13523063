@@ -1,0 +1,140 @@
+Total nodes visited: 55058
+Time taken: 159.90190000000075 ms
+Algoritma: Greedy
+Heuristic: Jarak primary piece ke pintu
+Papan awal
+.ABBCD
+.A.UCD
+.PPU.GK
+..YY.G
+...H..
+...H..
+
+Gerakan 1: C-bawah
+.ABB.D
+.A.UCD
+.PPUCGK
+..YY.G
+...H..
+...H..
+
+Gerakan 2: G-bawah
+.ABB.D
+.A.UCD
+.PPUC.K
+..YY.G
+...H.G
+...H..
+
+Gerakan 3: D-bawah
+.ABB..
+.A.UCD
+.PPUCDK
+..YY.G
+...H.G
+...H..
+
+Gerakan 4: B-kanan
+.A..BB
+.A.UCD
+.PPUCDK
+..YY.G
+...H.G
+...H..
+
+Gerakan 5: U-atas
+.A.UBB
+.A.UCD
+.PP.CDK
+..YY.G
+...H.G
+...H..
+
+Gerakan 6: P-kanan
+.A.UBB
+.A.UCD
+..PPCDK
+..YY.G
+...H.G
+...H..
+
+Gerakan 7: A-bawah
+...UBB
+...UCD
+..PPCDK
+.AYY.G
+.A.H.G
+...H..
+
+Gerakan 8: P-kiri
+...UBB
+...UCD
+.PP.CDK
+.AYY.G
+.A.H.G
+...H..
+
+Gerakan 9: U-bawah
+....BB
+...UCD
+.PPUCDK
+.AYY.G
+.A.H.G
+...H..
+
+Gerakan 10: B-kiri
+.BB...
+...UCD
+.PPUCDK
+.AYY.G
+.A.H.G
+...H..
+
+Gerakan 11: U-atas
+.BBU..
+...UCD
+.PP.CDK
+.AYY.G
+.A.H.G
+...H..
+
+Gerakan 12: P-kanan
+.BBU..
+...UCD
+..PPCDK
+.AYY.G
+.A.H.G
+...H..
+
+Gerakan 13: C-bawah
+.BBU..
+...U.D
+..PP.DK
+.AYYCG
+.A.HCG
+...H..
+
+Gerakan 14: P-kanan
+.BBU..
+...U.D
+...PPDK
+.AYYCG
+.A.HCG
+...H..
+
+Gerakan 15: D-atas
+.BBU.D
+...U.D
+...PP.K
+.AYYCG
+.A.HCG
+...H..
+
+Gerakan 16: P-kanan
+.BBU.D
+...U.D
+....PPK
+.AYYCG
+.A.HCG
+...H..
+

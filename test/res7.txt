@@ -1,0 +1,31 @@
+Total nodes visited: 90
+Time taken: 1.073099999999613 ms
+Algoritma: UCS
+Papan awal
+ K
+....
+.LLA
+.P.A
+.P..
+
+Gerakan 1: A-bawah
+ K
+....
+.LL.
+.P.A
+.P.A
+
+Gerakan 2: L-kanan
+ K
+....
+..LL
+.P.A
+.P.A
+
+Gerakan 3: P-atas
+ K
+.P..
+.PLL
+...A
+...A
+

@@ -1,0 +1,3 @@
+Total nodes visited: 1448
+Time taken: 10.970800000000054 ms
+Algoritma: UCS

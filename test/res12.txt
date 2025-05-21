@@ -1,0 +1,444 @@
+Total nodes visited: 56056
+Time taken: 65.32859999999982 ms
+Algoritma: Greedy
+Heuristic: Jumlah piece antara primary piece dan pintu
+Papan awal
+ABB.C.
+ADE.CF
+ADEPPFK
+ZZZY.F
+..WYNN
+TTWLL.
+
+Gerakan 1: F-atas
+ABB.CF
+ADE.CF
+ADEPPFK
+ZZZY..
+..WYNN
+TTWLL.
+
+Gerakan 2: L-kanan
+ABB.CF
+ADE.CF
+ADEPPFK
+ZZZY..
+..WYNN
+TTW.LL
+
+Gerakan 3: Y-bawah
+ABB.CF
+ADE.CF
+ADEPPFK
+ZZZ...
+..WYNN
+TTWYLL
+
+Gerakan 4: Z-kanan
+ABB.CF
+ADE.CF
+ADEPPFK
+...ZZZ
+..WYNN
+TTWYLL
+
+Gerakan 5: D-bawah
+ABB.CF
+A.E.CF
+A.EPPFK
+.D.ZZZ
+.DWYNN
+TTWYLL
+
+Gerakan 6: W-atas
+ABB.CF
+A.E.CF
+A.EPPFK
+.DWZZZ
+.DWYNN
+TT.YLL
+
+Gerakan 7: T-kanan
+ABB.CF
+A.E.CF
+A.EPPFK
+.DWZZZ
+.DWYNN
+.TTYLL
+
+Gerakan 8: A-bawah
+.BB.CF
+..E.CF
+..EPPFK
+ADWZZZ
+ADWYNN
+ATTYLL
+
+Gerakan 9: B-kiri
+BB..CF
+..E.CF
+..EPPFK
+ADWZZZ
+ADWYNN
+ATTYLL
+
+Gerakan 10: E-atas
+BBE.CF
+..E.CF
+...PPFK
+ADWZZZ
+ADWYNN
+ATTYLL
+
+Gerakan 11: P-kiri
+BBE.CF
+..E.CF
+PP...FK
+ADWZZZ
+ADWYNN
+ATTYLL
+
+Gerakan 12: C-bawah
+BBE..F
+..E.CF
+PP..CFK
+ADWZZZ
+ADWYNN
+ATTYLL
+
+Gerakan 13: E-bawah
+BB...F
+..E.CF
+PPE.CFK
+ADWZZZ
+ADWYNN
+ATTYLL
+
+Gerakan 14: B-kanan
+...BBF
+..E.CF
+PPE.CFK
+ADWZZZ
+ADWYNN
+ATTYLL
+
+Gerakan 15: E-atas
+..EBBF
+..E.CF
+PP..CFK
+ADWZZZ
+ADWYNN
+ATTYLL
+
+Gerakan 16: P-kanan
+..EBBF
+..E.CF
+..PPCFK
+ADWZZZ
+ADWYNN
+ATTYLL
+
+Gerakan 17: A-atas
+A.EBBF
+A.E.CF
+A.PPCFK
+.DWZZZ
+.DWYNN
+.TTYLL
+
+Gerakan 18: D-atas
+ADEBBF
+ADE.CF
+A.PPCFK
+..WZZZ
+..WYNN
+.TTYLL
+
+Gerakan 19: P-kiri
+ADEBBF
+ADE.CF
+APP.CFK
+..WZZZ
+..WYNN
+.TTYLL
+
+Gerakan 20: T-kiri
+ADEBBF
+ADE.CF
+APP.CFK
+..WZZZ
+..WYNN
+TT.YLL
+
+Gerakan 21: W-bawah
+ADEBBF
+ADE.CF
+APP.CFK
+...ZZZ
+..WYNN
+TTWYLL
+
+Gerakan 22: Z-kiri
+ADEBBF
+ADE.CF
+APP.CFK
+ZZZ...
+..WYNN
+TTWYLL
+
+Gerakan 23: F-bawah
+ADEBB.
+ADE.CF
+APP.CFK
+ZZZ..F
+..WYNN
+TTWYLL
+
+Gerakan 24: B-kanan
+ADE.BB
+ADE.CF
+APP.CFK
+ZZZ..F
+..WYNN
+TTWYLL
+
+Gerakan 25: Y-atas
+ADEYBB
+ADEYCF
+APP.CFK
+ZZZ..F
+..W.NN
+TTW.LL
+
+Gerakan 26: N-kiri
+ADEYBB
+ADEYCF
+APP.CFK
+ZZZ..F
+..WNN.
+TTW.LL
+
+Gerakan 27: L-kiri
+ADEYBB
+ADEYCF
+APP.CFK
+ZZZ..F
+..WNN.
+TTWLL.
+
+Gerakan 28: F-bawah
+ADEYBB
+ADEYC.
+APP.C.K
+ZZZ..F
+..WNNF
+TTWLLF
+
+Gerakan 29: P-kanan
+ADEYBB
+ADEYC.
+A.PPC.K
+ZZZ..F
+..WNNF
+TTWLLF
+
+Gerakan 30: Z-kanan
+ADEYBB
+ADEYC.
+A.PPC.K
+..ZZZF
+..WNNF
+TTWLLF
+
+Gerakan 31: D-bawah
+A.EYBB
+A.EYC.
+A.PPC.K
+.DZZZF
+.DWNNF
+TTWLLF
+
+Gerakan 32: P-kiri
+A.EYBB
+A.EYC.
+APP.C.K
+.DZZZF
+.DWNNF
+TTWLLF
+
+Gerakan 33: Y-bawah
+A.E.BB
+A.EYC.
+APPYC.K
+.DZZZF
+.DWNNF
+TTWLLF
+
+Gerakan 34: B-kiri
+A.EBB.
+A.EYC.
+APPYC.K
+.DZZZF
+.DWNNF
+TTWLLF
+
+Gerakan 35: F-atas
+A.EBBF
+A.EYCF
+APPYCFK
+.DZZZ.
+.DWNN.
+TTWLL.
+
+Gerakan 36: Z-kanan
+A.EBBF
+A.EYCF
+APPYCFK
+.D.ZZZ
+.DWNN.
+TTWLL.
+
+Gerakan 37: W-atas
+A.EBBF
+A.EYCF
+APPYCFK
+.DWZZZ
+.DWNN.
+TT.LL.
+
+Gerakan 38: T-kanan
+A.EBBF
+A.EYCF
+APPYCFK
+.DWZZZ
+.DWNN.
+.TTLL.
+
+Gerakan 39: A-bawah
+..EBBF
+..EYCF
+.PPYCFK
+ADWZZZ
+ADWNN.
+ATTLL.
+
+Gerakan 40: P-kiri
+..EBBF
+..EYCF
+PP.YCFK
+ADWZZZ
+ADWNN.
+ATTLL.
+
+Gerakan 41: E-bawah
+...BBF
+..EYCF
+PPEYCFK
+ADWZZZ
+ADWNN.
+ATTLL.
+
+Gerakan 42: B-kiri
+..BB.F
+..EYCF
+PPEYCFK
+ADWZZZ
+ADWNN.
+ATTLL.
+
+Gerakan 43: C-atas
+..BBCF
+..EYCF
+PPEY.FK
+ADWZZZ
+ADWNN.
+ATTLL.
+
+Gerakan 44: B-kiri
+.BB.CF
+..EYCF
+PPEY.FK
+ADWZZZ
+ADWNN.
+ATTLL.
+
+Gerakan 45: Y-atas
+.BBYCF
+..EYCF
+PPE..FK
+ADWZZZ
+ADWNN.
+ATTLL.
+
+Gerakan 46: B-kiri
+BB.YCF
+..EYCF
+PPE..FK
+ADWZZZ
+ADWNN.
+ATTLL.
+
+Gerakan 47: E-atas
+BBEYCF
+..EYCF
+PP...FK
+ADWZZZ
+ADWNN.
+ATTLL.
+
+Gerakan 48: P-kanan
+BBEYCF
+..EYCF
+.PP..FK
+ADWZZZ
+ADWNN.
+ATTLL.
+
+Gerakan 49: A-atas
+BBEYCF
+..EYCF
+APP..FK
+ADWZZZ
+ADWNN.
+.TTLL.
+
+Gerakan 50: T-kiri
+BBEYCF
+..EYCF
+APP..FK
+ADWZZZ
+ADWNN.
+TT.LL.
+
+Gerakan 51: W-bawah
+BBEYCF
+..EYCF
+APP..FK
+AD.ZZZ
+ADWNN.
+TTWLL.
+
+Gerakan 52: Z-kiri
+BBEYCF
+..EYCF
+APP..FK
+ADZZZ.
+ADWNN.
+TTWLL.
+
+Gerakan 53: F-bawah
+BBEYC.
+..EYC.
+APP...K
+ADZZZF
+ADWNNF
+TTWLLF
+
+Gerakan 54: P-kanan
+BBEYC.
+..EYC.
+A...PPK
+ADZZZF
+ADWNNF
+TTWLLF
+

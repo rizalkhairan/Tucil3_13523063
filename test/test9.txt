@@ -1,0 +1,8 @@
+6 6
+8
+.ABBCD
+.A.UCD
+.PPU.GK
+..YY.G
+...H..
+...H..

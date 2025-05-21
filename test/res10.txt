@@ -1,0 +1,220 @@
+Total nodes visited: 14863
+Time taken: 26.958999999999833 ms
+Algoritma: Greedy
+Heuristic: Jumlah piece antara primary piece dan pintu
+Papan awal
+.AABB.
+CCDDEF
+GHPPEFK
+GHUVEF
+GHUVNN
+.XXYY.
+
+Gerakan 1: A-kiri
+AA.BB.
+CCDDEF
+GHPPEFK
+GHUVEF
+GHUVNN
+.XXYY.
+
+Gerakan 2: G-bawah
+AA.BB.
+CCDDEF
+.HPPEFK
+GHUVEF
+GHUVNN
+GXXYY.
+
+Gerakan 3: Y-kanan
+AA.BB.
+CCDDEF
+.HPPEFK
+GHUVEF
+GHUVNN
+GXX.YY
+
+Gerakan 4: X-kanan
+AA.BB.
+CCDDEF
+.HPPEFK
+GHUVEF
+GHUVNN
+G.XXYY
+
+Gerakan 5: H-bawah
+AA.BB.
+CCDDEF
+..PPEFK
+GHUVEF
+GHUVNN
+GHXXYY
+
+Gerakan 6: P-kiri
+AA.BB.
+CCDDEF
+PP..EFK
+GHUVEF
+GHUVNN
+GHXXYY
+
+Gerakan 7: U-atas
+AA.BB.
+CCDDEF
+PPU.EFK
+GHUVEF
+GH.VNN
+GHXXYY
+
+Gerakan 8: V-atas
+AA.BB.
+CCDDEF
+PPUVEFK
+GHUVEF
+GH..NN
+GHXXYY
+
+Gerakan 9: N-kiri
+AA.BB.
+CCDDEF
+PPUVEFK
+GHUVEF
+GHNN..
+GHXXYY
+
+Gerakan 10: E-bawah
+AA.BB.
+CCDD.F
+PPUVEFK
+GHUVEF
+GHNNE.
+GHXXYY
+
+Gerakan 11: D-kanan
+AA.BB.
+CC.DDF
+PPUVEFK
+GHUVEF
+GHNNE.
+GHXXYY
+
+Gerakan 12: U-atas
+AAUBB.
+CCUDDF
+PP.VEFK
+GH.VEF
+GHNNE.
+GHXXYY
+
+Gerakan 13: B-kanan
+AAU.BB
+CCUDDF
+PP.VEFK
+GH.VEF
+GHNNE.
+GHXXYY
+
+Gerakan 14: F-bawah
+AAU.BB
+CCUDD.
+PP.VEFK
+GH.VEF
+GHNNEF
+GHXXYY
+
+Gerakan 15: D-kanan
+AAU.BB
+CCU.DD
+PP.VEFK
+GH.VEF
+GHNNEF
+GHXXYY
+
+Gerakan 16: V-atas
+AAUVBB
+CCUVDD
+PP..EFK
+GH..EF
+GHNNEF
+GHXXYY
+
+Gerakan 17: P-kanan
+AAUVBB
+CCUVDD
+..PPEFK
+GH..EF
+GHNNEF
+GHXXYY
+
+Gerakan 18: H-atas
+AAUVBB
+CCUVDD
+.HPPEFK
+GH..EF
+GHNNEF
+G.XXYY
+
+Gerakan 19: X-kiri
+AAUVBB
+CCUVDD
+.HPPEFK
+GH..EF
+GHNNEF
+GXX.YY
+
+Gerakan 20: Y-kiri
+AAUVBB
+CCUVDD
+.HPPEFK
+GH..EF
+GHNNEF
+GXXYY.
+
+Gerakan 21: F-bawah
+AAUVBB
+CCUVDD
+.HPPE.K
+GH..EF
+GHNNEF
+GXXYYF
+
+Gerakan 22: G-atas
+AAUVBB
+CCUVDD
+GHPPE.K
+GH..EF
+GHNNEF
+.XXYYF
+
+Gerakan 23: X-kiri
+AAUVBB
+CCUVDD
+GHPPE.K
+GH..EF
+GHNNEF
+XX.YYF
+
+Gerakan 24: Y-kiri
+AAUVBB
+CCUVDD
+GHPPE.K
+GH..EF
+GHNNEF
+XXYY.F
+
+Gerakan 25: E-bawah
+AAUVBB
+CCUVDD
+GHPP..K
+GH..EF
+GHNNEF
+XXYYEF
+
+Gerakan 26: P-kanan
+AAUVBB
+CCUVDD
+GH..PPK
+GH..EF
+GHNNEF
+XXYYEF
+
