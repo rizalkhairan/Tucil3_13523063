@@ -44,7 +44,7 @@ class SearchNode {
         return this.board.boardStrings().join("");
     }
     
-    toString(count, doorSide, doorPos) {
+    toString(count, doorSide, doorPos, colorize = true) {
         const piece = this.board.pieces.get(this.movedLetter);
 
         let lines = [];
@@ -82,21 +82,23 @@ class SearchNode {
             boardStrings[doorPos.y] += DOOR;
         }
         // Colorize the board
-        for (let i = 0; i < boardStrings.length; i++) {
-            let rowchars = boardStrings[i].split("");
-            for (let j = 0; j < rowchars.length; j++) {
-                const char = rowchars[j];
-                if (char === PRIMARY_PIECE) {
-                    rowchars[j] = ANSI_RED + char + ANSI_RESET;
-                } else if (char === this.movedLetter) {
-                    rowchars[j] = ANSI_BLUE + char + ANSI_RESET;
-                } else if (char === DOOR) {
-                    rowchars[j] = ANSI_GREEN + char + ANSI_RESET;
+        if (colorize) {
+            for (let i = 0; i < boardStrings.length; i++) {
+                let rowchars = boardStrings[i].split("");
+                for (let j = 0; j < rowchars.length; j++) {
+                    const char = rowchars[j];
+                    if (char === PRIMARY_PIECE) {
+                        rowchars[j] = ANSI_RED + char + ANSI_RESET;
+                    } else if (char === this.movedLetter) {
+                        rowchars[j] = ANSI_BLUE + char + ANSI_RESET;
+                    } else if (char === DOOR) {
+                        rowchars[j] = ANSI_GREEN + char + ANSI_RESET;
+                    }
                 }
+                boardStrings[i] = rowchars.join("");
             }
-            boardStrings[i] = rowchars.join("");
         }
-        
+
         lines.push(boardStrings.join("\n"));
         lines.push("\n");
 
@@ -163,16 +165,24 @@ class PuzzleState {
         return false;
     }
 
-    printPath(node) {
+    printPath(node, toFile = false) {
         const path = [];
         while (node !== null) {
             path.push(node);
             node = node.parent;
         }
         path.reverse();
+        
+        let result = [];
         for (let i = 0; i < path.length; i++) {
-            console.log(`f(n) = ${path[i].getF()} g(n) = ${path[i].g} h(n) = ${path[i].h}`);
-            console.log(path[i].toString(i, this.doorSide, this.doorPos));
+            result.push(path[i].toString(i, this.doorSide, this.doorPos, toFile === false) + "\n");
+        }
+        
+        if (toFile) {
+            return result.join("");
+        } else {
+            console.log(result.join(""));
+            return;
         }
     }
 }

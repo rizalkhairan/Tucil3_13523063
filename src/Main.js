@@ -1,5 +1,6 @@
-import { ReadConfig } from './ConfigParser.js';
 import { createInterface } from 'readline';
+import { writeFileSync } from 'fs';
+import { ReadConfig } from './ConfigParser.js';
 import { Pathfind } from './Pathfind.js';
 import { distanceToDoor, nodesFromStart, piecesInFront, recursiveBlockers } from './Heuristics.js';
 
@@ -44,9 +45,13 @@ async function main() {
         return;
     }
 
-    // Validate algorithm choice
     if (!SEARCH_ALGORITHMS[algo]) {
         console.error("Invalid algorithm choice");
+        rl.close();
+        return;
+    }
+    if (!HEURISTICS[heuristic]) {
+        console.error("Invalid heuristic choice");
         rl.close();
         return;
     }
@@ -90,6 +95,24 @@ async function main() {
         puzzleState.printPath(goalNode);
     } else {
         console.log("No solution found.");
+    }
+
+    const savePath = await askQuestion(rl, "Simpan ke file? (y/n): ");
+    if (savePath.toLowerCase() === 'y') {
+        const fileName = await askQuestion(rl, "Nama file : ");
+        try {
+            let pathStrings = [];
+            pathStrings.push("Total nodes visited: " + puzzleState.nodeCount + "\n");
+            pathStrings.push("Time taken: " + (end - start) + " ms\n");
+            pathStrings.push("Algoritma: " + SEARCH_ALGORITHMS[algo] + "\n");
+            pathStrings.push("Heuristic: " + HEURISTICS[heuristic].desc + "\n\n");
+            pathStrings.push(puzzleState.printPath(goalNode, true));
+            writeFileSync(fileName, pathStrings.join(""));
+
+            console.log("Solusi disimpan ke " + fileName);
+        } catch (error) {
+            console.error("Error saving path to file\n", error);
+        }
     }
     
     rl.close();
