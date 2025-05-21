@@ -171,6 +171,7 @@ class PuzzleState {
         }
         path.reverse();
         for (let i = 0; i < path.length; i++) {
+            console.log(`f(n) = ${path[i].getF()} g(n) = ${path[i].g} h(n) = ${path[i].h}`);
             console.log(path[i].toString(i, this.doorSide, this.doorPos));
         }
     }

@@ -1,12 +1,16 @@
 import { ReadConfig } from './ConfigParser.js';
 import { createInterface } from 'readline';
 import { Pathfind } from './Pathfind.js';
-import { nodesFromStart, piecesInFront, recursiveBlockers } from './Heuristics.js';
+import { distanceToDoor, nodesFromStart, piecesInFront, recursiveBlockers } from './Heuristics.js';
 
 const SEARCH_ALGORITHMS = {
     "1": "A*",
     "2": "UCS",
     "3": "Greedy",
+}
+const HEURISTICS = {
+    "1": {func: piecesInFront, desc: "Jumlah piece antara primary piece dan pintu"},
+    "2": {func: distanceToDoor, desc: "Jarak primary piece ke pintu"},
 }
 
 function askQuestion(rl, query) {
@@ -19,12 +23,17 @@ async function main() {
         output: process.stdout
     });
 
-    const filename = await askQuestion(rl, "Enter the config file name: ");    
-    let algoMsg = "Choose an algorithm:\n|";
+    const filename = await askQuestion(rl, "Nama file konfigurasi: ");    
+    let algoMsg = "Pilih algoritma:\n|";
     for (const [key, value] of Object.entries(SEARCH_ALGORITHMS)) {
         algoMsg += ` ${key}: ${value}`.padEnd(10, " ") + "|";
     }
     const algo = await askQuestion(rl, algoMsg + "\n");
+    let heuristicMsg = "Pilih heuristic:\n";
+    for (const [key, value] of Object.entries(HEURISTICS)) {
+        heuristicMsg += ` ${key}: ${value.desc}` + "\n";
+    }
+    const heuristic = await askQuestion(rl, heuristicMsg);
 
     let puzzleState = null;
     try {
@@ -50,7 +59,7 @@ async function main() {
             puzzleState.nodeCount = 0;
 
             start = performance.now();
-            goalNode = Pathfind(puzzleState, nodesFromStart, piecesInFront);
+            goalNode = Pathfind(puzzleState, nodesFromStart, HEURISTICS[heuristic].func);
             end = performance.now();
             break;
         case "2":
@@ -66,7 +75,7 @@ async function main() {
             puzzleState.nodeCount = 0;
 
             start = performance.now();
-            goalNode = Pathfind(puzzleState, null, piecesInFront);
+            goalNode = Pathfind(puzzleState, null, HEURISTICS[heuristic].func);
             end = performance.now();
             break;
         default:
