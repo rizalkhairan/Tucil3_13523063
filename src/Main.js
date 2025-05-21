@@ -107,7 +107,9 @@ async function main() {
             pathStrings.push("Total nodes visited: " + puzzleState.nodeCount + "\n");
             pathStrings.push("Time taken: " + (end - start) + " ms\n");
             pathStrings.push("Algoritma: " + SEARCH_ALGORITHMS[algo] + "\n");
-            pathStrings.push("Heuristic: " + HEURISTICS[heuristic].desc + "\n\n");
+            if (heuristic !== undefined) {
+                pathStrings.push("Heuristic: " + HEURISTICS[heuristic].desc + "\n");
+            }
             pathStrings.push(puzzleState.printPath(goalNode, true));
             writeFileSync(fileName, pathStrings.join(""));
 
